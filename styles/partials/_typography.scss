@@ -1,0 +1,18 @@
+@use "./mixins" as *;
+
+//default typography
+@mixin page-font {
+    font-family: "Avenir-regular";
+    font-size: 2rem;
+}
+
+@mixin page-header {
+    font-family: "Avenir-bold";
+    font-size: 24px;
+    line-height: 32px;
+    // font-weight: 700;
+    @include tablet {
+        font-size: 60px;
+        line-height: 68px;
+    }
+}
