@@ -7,24 +7,144 @@
     <title>Band Site</title>
   </head>
   <body>
-    <header>
-      <h2>BANDSITE</h2>
-      <nav>
-        <ul>
-          <li>Biography</li>
-          <li>Shows</li>
+    <header class="header">
+      <img class="header__logo" src="/assets/logos/Logo-bandsite.svg" />
+      <nav class="header__nav">
+        <ul class="header__list">
+          <li class="header__list-item--active">
+            <a href="#biography">Biography</a>
+          </li>
+          <li class="header__list-item">
+            <a href="#shows">Shows</a>
+          </li>
         </ul>
       </nav>
     </header>
-    <div>The Bees Knees</div>
-    <section>
-      <h2>About the musicians</h2>
+
+    <section class="hero">
+      <h1 class="hero__title">The Bees Knees</h1>
     </section>
-    <section>
-      <h2>Photo Gallery</h2>
+
+    <section class="introduction">
+      <h1 class="introduction__title">About the Musicians</h1>
+
+      <div class="introduction__image-container">
+        <img src="/assets/images/band.jpg" />
+      </div>
+
+      <div class="introduction__wrapper">
+        <div>
+          <p class="introduction__endorsement">
+            “We push each other to be the best. It’s not uncommon for one of us
+            to say ‘this needs to be better, back to the drawing board’”
+          </p>
+          <p class="introduction__endorsement-name">
+            - Bryan Teddy, lead vocalist of The Bees Knees
+          </p>
+        </div>
+        <div>
+          <h3 class="introduction__subtitle">The Bees Knees</h3>
+          <div class="introduction__paragraph-container">
+            <p class="introduction__paragraph">
+              The Bees Knees is a pop rock band originating from San Francisco,
+              California. The band consists of lead vocalist Bryan Teddy,
+              guitarist Mack Tolkens, guitarist Andrew Green, bassist Kent
+              Zulkee and drummer Freddie Fischer. The band achieved its first
+              commercial success as an unsigned act, drawing attention from
+              manager Cam Adams. Having worked with other popular acts (The
+              Elephant In The Room, One Trick Pony, The Cat’s Meow), Adams was
+              confident the band could succeed even further, pushing them to
+              sign with Magenta Records.
+            </p>
+            <p class="introduction__paragraph">
+              From there, the band has soared, gaining international recognition
+              and ranking in the top 10 on the Poster Charts. New fans
+              immediately fell in love with the band’s original and organic
+              attitude, solidifying their place as one of the hottest and
+              fastest up and coming acts of this century. Fans affectionately
+              refer to themselves as “The Hive” and are drawn to their candid
+              and authentic performances on stage. Looking forward to touring in
+              the future, The Bees Knees are currently recording their second
+              studio album, looking to be released in late 2021.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
-    <footer>
-      <h2>Get in Touch</h2>
+    <section class="photo-gallery">
+      <h2 class="photo-gallery__title">Photo Gallery</h2>
+      <div class="photo-gallery__image-container">
+        <img src="/assets/images/Photo-gallery-1.jpg" />
+        <img src="/assets/images/Photo-gallery-2.jpg" />
+        <img src="/assets/images/Photo-gallery-3.jpg" />
+        <img src="/assets/images/Photo-gallery-4.jpg" />
+        <img src="/assets/images/Photo-gallery-5.jpg" />
+        <img src="/assets/images/Photo-gallery-6.jpg" />
+        <img src="/assets/images/Photo-gallery-7.jpg" />
+        <img src="/assets/images/Photo-gallery-8.jpg" />
+        <img src="/assets/images/Photo-gallery-9.jpg" />
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__title-wrapper">
+        <h2 class="footer__title">Get in Touch</h2>
+        <div class="footer__social-container">
+          <img src="/assets/icons/Icon-instagram.svg" />
+          <img src="/assets/icons/Icon-facebook.svg" />
+          <img src="/assets/icons/Icon-twitter.svg" />
+        </div>
+      </div>
+
+      <div class="footer__info-wrapper">
+        <div class="footer__info">
+          <div class="footer__info-name">
+            <p>Cam Adams</p>
+            <p>The Bees Knees Management</p>
+          </div>
+          <div class="footer__info-address">
+            <p>503 Broadway Penthouse,</p>
+            <p>New York, NY 10012, USA</p>
+          </div>
+          <div class="footer__info-email">
+            <p>info@thebeesknees.com</p>
+          </div>
+        </div>
+
+        <div class="footer__info">
+          <div class="footer__info-name">
+            <p>Pearl Gregg</p>
+            <p>Limitless Artist Group</p>
+          </div>
+          <div class="footer__info-address">
+            <p>Booking Agent for</p>
+            <p>US / South America / Japan</p>
+          </div>
+          <div class="footer__info-email">
+            <p>pearl.gregg@limitlessag.com</p>
+          </div>
+        </div>
+
+        <div class="footer__info">
+          <div class="footer__info-name">
+            <p>Carson Whyte</p>
+            <p>ARCH Entertainment</p>
+          </div>
+          <div class="footer__info-address">
+            <p>Booking Agent for</p>
+            <p>UK / EU / AU</p>
+          </div>
+          <div class="footer__info-email">
+            <p>cwhyte@archentertainment.com</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__logo-container">
+        <img src="/assets/logos/Logo-bandsite.svg" />
+      </div>
+      <p class="footer__copyright">
+        Copyright The Bees Knees © 2021 All Rights Reserved
+      </p>
     </footer>
   </body>
 </html>
