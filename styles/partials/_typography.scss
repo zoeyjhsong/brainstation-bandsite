@@ -16,3 +16,9 @@
         line-height: 68px;
     }
 }
+
+@mixin body-copy {
+    font-family: "Avenir-regular";
+    font-size: 13px;
+    line-height: 18px;
+}
