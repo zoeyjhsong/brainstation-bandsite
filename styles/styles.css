@@ -50,7 +50,7 @@ button {
 }
 @media screen and (min-width: 768px) {
   .header__nav {
-    width: 30%;
+    width: 250px;
     padding: 0 2rem;
   }
 }
@@ -58,9 +58,11 @@ button {
   padding-top: 1rem;
   list-style: none;
   display: flex;
+  flex-direction: row;
 }
 @media screen and (min-width: 768px) {
   .header__list {
+    gap: 2rem;
     padding: 0;
   }
 }
@@ -70,61 +72,42 @@ button {
   text-align: center;
   padding-bottom: 1rem;
   border-bottom: 2px solid #ffffff;
-  font-weight: bold;
-}
-.header__list-item--active:hover, .header__list-item--active:active, .header__list-item--active:focus {
-  border-bottom: 2px solid #ffffff;
-  color: white;
-  font-weight: 700;
-}
-@media screen and (min-width: 768px) {
-  .header__list-item--active:hover, .header__list-item--active:active, .header__list-item--active:focus {
-    border-bottom: none;
-    text-decoration: underline;
-    text-decoration-color: #ffffff;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 1.65rem;
-  }
+  font-family: "Avenir-bold";
 }
 @media screen and (min-width: 768px) {
   .header__list-item--active {
-    padding-bottom: 0;
-    display: flex;
-    text-align: left;
-    justify-content: flex-start;
     border: 0;
+    padding: 0;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 1.7rem;
   }
 }
-.header__list-item--active a {
-  color: white;
-  text-decoration: none;
+@media screen and (min-width: 768px) {
+  .header__list-item--active:hover, .header__list-item--active:focus {
+    border-bottom: none;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 1.7rem;
+  }
 }
 .header__list-item {
   display: inline-block;
   width: 50%;
   text-align: center;
 }
-.header__list-item:hover, .header__list-item:active, .header__list-item:focus {
+.header__list-item:hover, .header__list-item:focus {
   border-bottom: 2px solid #ffffff;
-  color: white;
-  font-weight: 600;
 }
 @media screen and (min-width: 768px) {
-  .header__list-item:hover, .header__list-item:active, .header__list-item:focus {
+  .header__list-item:hover, .header__list-item:focus {
     border-bottom: none;
     text-decoration: underline;
     text-decoration-color: #ffffff;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 1.65rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .header {
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
-    width: 100%;
-    border: 0;
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 1.7rem;
   }
 }
 .header a:link {

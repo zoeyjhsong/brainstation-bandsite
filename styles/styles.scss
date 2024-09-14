@@ -37,7 +37,7 @@ button {
         width: 100%;
 
         @include tablet {
-            width: 30%;
+            width: 250px;
             padding: 0 2rem;
         }
     }
@@ -46,9 +46,10 @@ button {
         padding-top: 1rem;
         list-style: none;
         display: flex;
-        // flex-direction: row;
+        flex-direction: row;
 
         @include tablet {
+            gap: 2rem;
             padding: 0;
         }
     }
@@ -59,43 +60,26 @@ button {
         text-align: center;
         padding-bottom: 1rem;
         border-bottom: 2px solid $white;
-        font-weight: bold;
+        font-family: "Avenir-bold";
+
+        @include tablet {
+            border: 0;
+            padding: 0;
+            text-decoration: underline;
+            text-decoration-color: $white;
+            text-decoration-thickness: 2.5px;
+            text-underline-offset: 1.7rem;
+        }
 
         &:hover,
-        &:active,
         &:focus {
-            border-bottom: 2px solid $white;
-            color: white;
-            font-weight: 700;
-
             @include tablet {
                 border-bottom: none;
                 text-decoration: underline;
                 text-decoration-color: $white;
-                text-decoration-thickness: 2px;
-                text-underline-offset: 1.65rem;
+                text-decoration-thickness: 2.5px;
+                text-underline-offset: 1.7rem;
             }
-        }
-
-        @include tablet {
-            padding-bottom: 0;
-            display: flex;
-            text-align: left;
-            justify-content: flex-start;
-            border: 0;
-        }
-
-        a {
-            color: white;
-            text-decoration: none;
-
-            // @include tablet {
-            //     padding: 0;
-            //     border-bottom: none;
-            //     text-decoration: underline white;
-            //     text-decoration-thickness: 10px;
-            //     text-underline-offset: 10px;
-            // }
         }
     }
 
@@ -105,28 +89,17 @@ button {
         text-align: center;
 
         &:hover,
-        &:active,
         &:focus {
             border-bottom: 2px solid $white;
-            color: white;
-            font-weight: 600;
 
             @include tablet {
                 border-bottom: none;
                 text-decoration: underline;
                 text-decoration-color: $white;
-                text-decoration-thickness: 2px;
-                text-underline-offset: 1.65rem;
+                text-decoration-thickness: 2.5px;
+                text-underline-offset: 1.7rem;
             }
         }
-    }
-
-    @include tablet {
-        display: flex;
-        justify-content: flex-start;
-        text-align: left;
-        width: 100%;
-        border: 0;
     }
     a {
         &:link {
