@@ -1,37 +1,53 @@
 const showListWrapper = document.querySelector(".show__list-wrapper");
+const api_key = "8939596b-b112-459e-ade3-af117e191165";
 
-let showArray = [
-  {
-    date: "Mon Sept 06 2021",
-    venue: "Ronald Lane ",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Tue Sept 21 2021",
-    venue: "Pier 3 East",
-    location: "San Francisco, CA ",
-  },
-  {
-    date: "Fri Oct 15 2021 ",
-    venue: "View Lounge",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Sat Nov 06 2021",
-    venue: "Hyatt Agency",
-    location: "San Francisco, CA ",
-  },
-  {
-    date: "Fri Nov 26 2021",
-    venue: "Moscow Center",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Wed Dec 15 2021",
-    venue: "Press Club ",
-    location: "San Francisco, CA",
-  },
-];
+// let showArray = [
+//   {
+//     date: "Mon Sept 06 2021",
+//     venue: "Ronald Lane ",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: "Tue Sept 21 2021",
+//     venue: "Pier 3 East",
+//     location: "San Francisco, CA ",
+//   },
+//   {
+//     date: "Fri Oct 15 2021 ",
+//     venue: "View Lounge",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: "Sat Nov 06 2021",
+//     venue: "Hyatt Agency",
+//     location: "San Francisco, CA ",
+//   },
+//   {
+//     date: "Fri Nov 26 2021",
+//     venue: "Moscow Center",
+//     location: "San Francisco, CA",
+//   },
+//   {
+//     date: "Wed Dec 15 2021",
+//     venue: "Press Club ",
+//     location: "San Francisco, CA",
+//   },
+// ];
+
+axios
+  .get(`https://project-1-api.herokuapp.com/showdates?api_key=${api_key}`)
+  .then((response) => {
+    displayAllShows(response.data);
+  })
+  .catch((error) => {
+    console.log("Error fetching shows ;", error);
+  });
+
+function displayAllShows(shows) {
+  shows.forEach((show) => {
+    displayShow(show);
+  });
+}
 
 function displayShow(show) {
   const showCardCon = document.createElement("div");
@@ -53,7 +69,14 @@ function displayShow(show) {
   showCard.appendChild(showDate);
   showDate.classList.add("show__date");
 
-  showDate.innerHTML = show.date;
+  showDate.innerHTML = new Date(show.date)
+    .toLocaleDateString("en-US", {
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    })
+    .replace(/,/g, "");
 
   //venue
   const showVenueHeader = document.createElement("span");
@@ -66,7 +89,7 @@ function displayShow(show) {
   showCard.appendChild(showVenue);
   showVenue.classList.add("show__venue");
 
-  showVenue.innerHTML = show.venue;
+  showVenue.innerHTML = show.place;
 
   //location
   const showLocationHeader = document.createElement("span");
@@ -87,11 +110,3 @@ function displayShow(show) {
 
   showButton.innerHTML = "BUY TICKETS";
 }
-
-function displayShows() {
-  showArray.forEach((show) => {
-    displayShow(show);
-  });
-}
-
-displayShows();

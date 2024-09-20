@@ -62,7 +62,7 @@ function submitComments(e) {
 
   axios
     .post(
-      "https://project-1-api.herokuapp.com/comments?api_key=8939596b-b112-459e-ade3-af117e191165",
+      `https://project-1-api.herokuapp.com/comments?api_key=${api_key}`,
       body
     )
     .then((response) => {
@@ -73,6 +73,7 @@ function submitComments(e) {
       console.log(error);
     });
 }
+
 // validate from fields
 function validateForm(commentName, commentText) {
   if (!commentName) {
@@ -99,7 +100,7 @@ function resetForm() {
   userComment.value = "";
 }
 
-// display a single comment ß
+// display a single comment
 function displayComment(comment) {
   const commentCard = document.createElement("div");
   commentListWrapper.appendChild(commentCard);
@@ -119,7 +120,7 @@ function displayComment(comment) {
   const commentCardNameDateContainer = document.createElement("div");
   commentCardContainer.appendChild(commentCardNameDateContainer);
   commentCardNameDateContainer.classList.add(
-    "comment__card-name_date_container"
+    "comment__card-name-date-container"
   );
 
   //comment__card-name
@@ -129,15 +130,62 @@ function displayComment(comment) {
 
   commentCardName.innerHTML = comment.name;
 
+  //like & delete container (including date)
+  const commentCardLikeDeleteContainer = document.createElement("div");
+  commentCardNameDateContainer.appendChild(commentCardLikeDeleteContainer);
+  commentCardLikeDeleteContainer.classList.add(
+    "comment__card-like-delete-container"
+  );
+
   //comment__card-date
   const commentCardDate = document.createElement("span");
-  commentCardNameDateContainer.appendChild(commentCardDate);
+  commentCardLikeDeleteContainer.appendChild(commentCardDate);
   commentCardDate.classList.add("comment__card-date");
 
   // commentCardDate.innerHTML = comment.timestamp;
-  commentCardDate.innerHTML = new Intl.DateTimeFormat("en-US").format(
-    comment.timestamp
-  );
+  commentCardDate.innerHTML = timeSince(comment.timestamp);
+
+  //like button
+  const commentCardLikeBtn = document.createElement("img");
+  commentCardLikeDeleteContainer.appendChild(commentCardLikeBtn);
+  commentCardLikeBtn.classList.add("comment__card-like-button");
+  commentCardLikeBtn.src = "./assets/icons/icon-like.svg";
+
+  //like button count
+  const commentCardLikeBtnCount = document.createElement("p");
+  commentCardLikeDeleteContainer.appendChild(commentCardLikeBtnCount);
+  if (comment.likes > 0) {
+    commentCardLikeBtnCount.classList.add("comment__card-like-button-count");
+    commentCardLikeBtnCount.innerHTML = `${comment.likes}`; // Display current likes
+  } else {
+    commentCardLikeBtnCount.classList.remove("comment__card-like-button-count");
+    commentCardLikeBtnCount.innerHTML = ""; // Hide the count if zero
+  }
+
+  // if (commentCardLikeBtnCount > 0)
+  //   commentCardLikeBtnCount.class.add("comment__card-like-button-count");
+  // commentCardLikeBtnCount.innerHTML = `${comment.likes}`;
+
+  // if (comment.likes > 0) {
+  //   commentCardLikeBtnCount.innerHTML = `{comment.likes}`; //display current likes
+  // } else {
+  //   commentCardLikeBtnCount.innerHTML = "";
+  // }
+
+  //add event listener for the like button
+  commentCardLikeBtn.addEventListener("click", () => {
+    handleLike(comment.id, commentCardLikeBtnCount);
+  });
+
+  //delete button
+  const commentCardDeleteBtn = document.createElement("img");
+  commentCardLikeDeleteContainer.appendChild(commentCardDeleteBtn);
+  commentCardDeleteBtn.classList.add("comment__card-delete-button");
+  commentCardDeleteBtn.src = "./assets/icons/icon-delete.svg";
+
+  commentCardDeleteBtn.addEventListener("click", () => {
+    handleDelete(comment.id, commentCard);
+  });
 
   //comment__card-content
   const commentCardContent = document.createElement("p");
@@ -147,6 +195,62 @@ function displayComment(comment) {
   commentCardContent.innerHTML = comment.comment;
 
   commentListContainer.prepend(commentCard);
+}
+
+//function to handle the like button click and make the PUT request
+function handleLike(id, likeCount) {
+  axios
+    .put(
+      `https://project-1-api.herokuapp.com/comments/${id}/like?api_key=${api_key}`
+    )
+    .then((response) => {
+      const updatedLikes = response.data.likes;
+      likeCount.innerHTML = `${updatedLikes}`;
+    })
+    .catch((error) => {
+      console.log("error updating likes:", error);
+    });
+}
+
+function handleDelete(id, commentCard) {
+  axios
+    .delete(
+      `https://project-1-api.herokuapp.com/comments/${id}?api_key=${api_key}`
+    )
+    .then((response) => {
+      console.log(`Deleted post with id ${id}`);
+      commentCard.remove();
+    })
+    .catch((error) => {
+      console.log("error deleting comments", error);
+    });
+}
+
+function timeSince(timestamp) {
+  const now = new Date().getTime();
+  let secondsPast = (now - timestamp) / 1000;
+
+  // Ensure secondsPast is not negative
+  if (secondsPast < 0) {
+    secondsPast = 0;
+  }
+
+  //calculate different time intervals
+  if (secondsPast < 60) {
+    return `${Math.floor(secondsPast)} seconds ago`;
+  } else if (secondsPast < 3600) {
+    return `${Math.floor(secondsPast / 60)} minutes ago`;
+  } else if (secondsPast < 86400) {
+    return `${Math.floor(secondsPast / 3600)} hours ago`;
+  } else if (secondsPast < 604800) {
+    return `${Math.floor(secondsPast / 86400)} days ago`;
+  } else if (secondsPast < 2592000) {
+    return `${Math.floor(secondsPast / 604800)} weeks ago`;
+  } else if (secondsPast < 31557600) {
+    return `${Math.floor(secondsPast < 2592000)} months ago`;
+  } else {
+    return `${Math.floor(secondsPast / 31557600)} years ago`;
+  }
 }
 
 // function displayAllComments() {

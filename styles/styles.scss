@@ -329,8 +329,14 @@ button {
             flex-grow: 1;
         }
 
-        &-name_date_container {
+        &-name-date-container {
             display: flex;
+            justify-content: space-between;
+        }
+
+        &-like-delete-container {
+            display: flex;
+            gap: 1.5rem;
             justify-content: space-between;
         }
 

@@ -316,8 +316,13 @@ button {
   width: 100%;
   flex-grow: 1;
 }
-.comment__card-name_date_container {
+.comment__card-name-date-container {
   display: flex;
+  justify-content: space-between;
+}
+.comment__card-like-delete-container {
+  display: flex;
+  gap: 1.5rem;
   justify-content: space-between;
 }
 .comment__card-name {
